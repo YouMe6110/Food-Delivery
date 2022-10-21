@@ -2,6 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:food_delivery/utils/dimensions.dart';
 
+import '../../widgets/app_icon.dart';
+
 class PopularFodDetail extends StatelessWidget {
   const PopularFodDetail({Key? key}) : super(key: key);
 
@@ -26,10 +28,19 @@ class PopularFodDetail extends StatelessWidget {
                 ),
           )),
           Positioned(
+            top: Dimensions.height45,
               left: Dimensions.width20,
               right: Dimensions.width20,
               child: Row(
-              children: [],
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                AppIcon(icon: Icons.arrow_back_ios),
+                AppIcon(icon: Icons.shopping_cart_outlined),
+              ],
+          )),
+          Positioned(
+              child: Container(
+
           ))
         ],
       ),
