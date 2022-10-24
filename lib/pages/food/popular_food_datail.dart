@@ -5,6 +5,7 @@ import 'package:food_delivery/widgets/app_column.dart';
 import 'package:food_delivery/utils/colors.dart';
 import 'package:food_delivery/widgets/app_icon.dart';
 import 'package:food_delivery/widgets/big_text.dart';
+import 'package:food_delivery/widgets/exandable_text_widget.dart';
 
 class PopularFodDetail extends StatelessWidget {
   const PopularFodDetail({Key? key}) : super(key: key);
@@ -15,6 +16,7 @@ class PopularFodDetail extends StatelessWidget {
       backgroundColor: Colors.white,
       body: Stack(
         children: [
+          //background image
           Positioned(
               left: 0,
               right: 0,
@@ -30,6 +32,7 @@ class PopularFodDetail extends StatelessWidget {
                   )
                 ),
           )),
+          //icon widgets
           Positioned(
             top: Dimensions.height45,
               left: Dimensions.width20,
@@ -41,6 +44,7 @@ class PopularFodDetail extends StatelessWidget {
                 AppIcon(icon: Icons.shopping_cart_outlined),
               ],
           )),
+          //introduction of food
           Positioned(
               left: 0,
               right: 0,
@@ -60,7 +64,9 @@ class PopularFodDetail extends StatelessWidget {
                   children: [
                     AppColumn(text: "Chinese Side"),
                     SizedBox(height: Dimensions.height20,),
-                    BigText(text: "Introduce")
+                    BigText(text: "Introduce"),
+                    SizedBox(height: Dimensions.height20,),
+                    Expanded(child: SingleChildScrollView(child: ExpandableTextWidget(text: "Chicken marinated in a spiced yoghurt is placed in a large pot, then layered with fried onions (cheeky easy sub below!), fresh coriander/cilantro, then par boild lightly spiced rice")))
                   ],
                 ),
               )
