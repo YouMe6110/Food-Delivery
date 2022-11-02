@@ -5,8 +5,8 @@ import 'package:food_delivery/models/products_model.dart';
 class PopularProductController extends GetxController {
   final PopularProductRepo popularProductRepo;
   PopularProductController({required this.popularProductRepo});
-  List<dynamic> _popularProductList=[];
-  List<dynamic> get popularProductList => _popularProductList;
+  List<ProductsModel> _popularProductList=[];
+  List<ProductsModel> get popularProductList => _popularProductList;
 
   bool _isLoaded = false;
   bool get isLoaded => _isLoaded;
@@ -18,6 +18,7 @@ class PopularProductController extends GetxController {
       _popularProductList=[];
       _popularProductList.addAll(Product.fromJson(response.body).products);
       //print(_popularProductList);
+      _isLoaded = true;
       update();
     } else {
 
