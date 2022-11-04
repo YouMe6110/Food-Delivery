@@ -6,8 +6,8 @@ import 'package:food_delivery/widgets/app_icon.dart';
 import 'package:food_delivery/widgets/big_text.dart';
 import 'package:food_delivery/widgets/exandable_text_widget.dart';
 
-class RecommenededFoodDetail extends StatelessWidget {
-  const RecommenededFoodDetail({Key? key}) : super(key: key);
+class RecommendedFoodDetail extends StatelessWidget {
+  const RecommendedFoodDetail({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
