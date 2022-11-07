@@ -2,14 +2,19 @@ class Product {
   int? _totalSize;
   int? _typeId;
   int? _offset;
-  late List<ProductsModel> _products;
-  List<ProductsModel> get products => _products;
+  late List<ProductModel> _products;
 
-  Product({required totalSize, required typeId, required offset, required products}){
-    this._totalSize =totalSize;
+  List<ProductModel> get products => _products;
+
+  Product(
+      {required totalSize,
+      required typeId,
+      required offset,
+      required products}) {
+    this._totalSize = totalSize;
     this._typeId = typeId;
     this._offset = offset;
-    this._products =products;
+    this._products = products;
   }
 
   Product.fromJson(Map<String, dynamic> json) {
@@ -17,15 +22,15 @@ class Product {
     _typeId = json['type_id'];
     _offset = json['offset'];
     if (json['products'] != null) {
-      _products = <ProductsModel>[];
+      _products = <ProductModel>[];
       json['products'].forEach((v) {
-        _products.add(ProductsModel.fromJson(v));
+        _products.add(ProductModel.fromJson(v));
       });
     }
   }
 }
 
-class ProductsModel {
+class ProductModel {
   int? id;
   String? name;
   String? description;
@@ -37,19 +42,19 @@ class ProductsModel {
   String? updatedAt;
   int? typeId;
 
-  ProductsModel(
+  ProductModel(
       {this.id,
-        this.name,
-        this.description,
-        this.price,
-        this.stars,
-        this.img,
-        this.location,
-        this.createdAt,
-        this.updatedAt,
-        this.typeId});
+      this.name,
+      this.description,
+      this.price,
+      this.stars,
+      this.img,
+      this.location,
+      this.createdAt,
+      this.updatedAt,
+      this.typeId});
 
-  ProductsModel.fromJson(Map<String, dynamic> json) {
+  ProductModel.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     name = json['name'];
     description = json['description'];
@@ -62,16 +67,16 @@ class ProductsModel {
     typeId = json['type_id'];
   }
 
-  Map<String,dynamic> toJson(){
+  Map<String, dynamic> toJson() {
     return {
-      "id":this.id,
+      "id": this.id,
       "name": this.name,
-      "price":this.price,
-      "img":this.img,
-      "location":this.location,
-      "createdAt":this.createdAt,
-      "updatedAt":this.updatedAt,
-      "typeId":this.typeId,
+      "price": this.price,
+      "img": this.img,
+      "location": this.location,
+      "createdAt": this.createdAt,
+      "updatedAt": this.updatedAt,
+      "typeId": this.typeId,
     };
   }
 }

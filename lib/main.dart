@@ -21,12 +21,11 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-      Get.find<PopularProductController>().getPopularProductList();
-      Get.find<RecommendedProductController>().getRecommendedProductList();
+    Get.find<PopularProductController>().getPopularProductList();
+    Get.find<RecommendedProductController>().getRecommendedProductList();
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
-
       home: MainFoodPage(),
       initialRoute: RouteHelper.initial,
       getPages: RouteHelper.routes,
