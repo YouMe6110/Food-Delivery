@@ -3,7 +3,7 @@ class CartModel {
   String? name;
   int? price;
   String? img;
-  int? quanity;
+  int? quantity;
   bool? isExit;
   String? time;
 
@@ -12,7 +12,7 @@ class CartModel {
     this.name,
     this.price,
     this.img,
-    this.quanity,
+    this.quantity,
     this.isExit,
     this.time,
   });
@@ -22,7 +22,7 @@ class CartModel {
     name = json['name'];
     price = json['price'];
     img = json['img'];
-    quanity = json['quanity'];
+    quantity = json['quanity'];
     isExit = json['isExit'];
     time = json['time'];
   }
