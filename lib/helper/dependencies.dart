@@ -4,9 +4,9 @@ import 'package:food_delivery/data/repository/cart_repo.dart';
 import 'package:food_delivery/data/repository/popular_product_repo.dart';
 import 'package:food_delivery/utils/app_constants.dart';
 import 'package:get/get.dart';
-import '../controllers/popular_product_controller.dart';
-import '../controllers/recommended_product_controller.dart';
-import '../data/repository/recommended_product_repo.dart';
+import 'package:food_delivery/controllers/popular_product_controller.dart';
+import 'package:food_delivery/controllers/recommended_product_controller.dart';
+import 'package:food_delivery/data/repository/recommended_product_repo.dart';
 
 Future<void> init() async {
   //api client
