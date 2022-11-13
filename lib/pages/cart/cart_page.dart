@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:food_delivery/controllers/cart_controller.dart';
+import 'package:food_delivery/pages/home/main_food_page.dart';
+import 'package:food_delivery/utils/app_constants.dart';
 import 'package:food_delivery/utils/colors.dart';
 import 'package:food_delivery/utils/dimensions.dart';
 import 'package:food_delivery/widgets/app_icon.dart';
@@ -31,11 +33,16 @@ class CartPage extends StatelessWidget {
                 SizedBox(
                   width: Dimensions.width20 * 5,
                 ),
-                AppIcon(
-                  icon: Icons.home_outlined,
-                  iconColor: Colors.white,
-                  backgroundColor: AppColors.mainColor,
-                  iconSize: Dimensions.iconSize24,
+                GestureDetector(
+                  onTap: () {
+                    Get.to(()=>MainFoodPage());
+                  },
+                  child: AppIcon(
+                    icon: Icons.home_outlined,
+                    iconColor: Colors.white,
+                    backgroundColor: AppColors.mainColor,
+                    iconSize: Dimensions.iconSize24,
+                  ),
                 ),
                 AppIcon(
                   icon: Icons.shopping_cart,
@@ -57,9 +64,10 @@ class CartPage extends StatelessWidget {
                   child: MediaQuery.removePadding(
                     context: context,
                     removeTop: true,
-                    child: GetBuilder<CartController>(builder: (cartController) {
+                    child:
+                        GetBuilder<CartController>(builder: (cartController) {
                       return ListView.builder(
-                          itemCount: 10,
+                          itemCount: cartController.getItems.length,
                           itemBuilder: (_, index) {
                             return Container(
                               width: double.maxFinite,
@@ -74,25 +82,43 @@ class CartPage extends StatelessWidget {
                                     decoration: BoxDecoration(
                                         image: DecorationImage(
                                             fit: BoxFit.cover,
-                                            image: AssetImage(
-                                                "assets/image/food0.png")),
+                                            image: NetworkImage(
+                                                AppConstants.BASE_URL +
+                                                    AppConstants.UPLOAD_URL +
+                                                    cartController
+                                                        .getItems[index].img!)),
                                         borderRadius: BorderRadius.circular(
                                             Dimensions.radius20),
                                         color: Colors.white),
                                   ),
-                                  SizedBox(width: Dimensions.width10,),
-                                  Expanded(child: Container(
-                                    height: Dimensions.height20*5,
+                                  SizedBox(
+                                    width: Dimensions.width10,
+                                  ),
+                                  Expanded(
+                                      child: Container(
+                                    height: Dimensions.height20 * 5,
                                     child: Column(
-                                      crossAxisAlignment: CrossAxisAlignment.start,
-                                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceEvenly,
                                       children: [
-                                        BigText(text: "Bitter Orange Juice", color: Colors.black54,),
+                                        BigText(
+                                          text: cartController
+                                              .getItems[index].name!,
+                                          color: Colors.black54,
+                                        ),
                                         SmallText(text: "Spicy"),
                                         Row(
-                                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceBetween,
                                           children: [
-                                            BigText(text: "Bitter Orange Juice", color: Colors.redAccent,),
+                                            BigText(
+                                              text: cartController
+                                                  .getItems[index].price
+                                                  .toString(),
+                                              color: Colors.redAccent,
+                                            ),
                                             Container(
                                               padding: EdgeInsets.only(
                                                   top: Dimensions.height10,
@@ -100,7 +126,9 @@ class CartPage extends StatelessWidget {
                                                   left: Dimensions.width10,
                                                   right: Dimensions.width10),
                                               decoration: BoxDecoration(
-                                                  borderRadius: BorderRadius.circular(Dimensions.radius20),
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          Dimensions.radius20),
                                                   color: Colors.white),
                                               child: Row(
                                                 children: [
@@ -110,14 +138,18 @@ class CartPage extends StatelessWidget {
                                                       },
                                                       child: Icon(
                                                         Icons.remove,
-                                                        color: AppColors.signColor,
+                                                        color:
+                                                            AppColors.signColor,
                                                       )),
                                                   SizedBox(
-                                                    width: Dimensions.width10 / 2,
+                                                    width:
+                                                        Dimensions.width10 / 2,
                                                   ),
-                                                  BigText(text: "0"),//popularProduct.inCartItems.toString()),
+                                                  BigText(text: "0"),
+                                                  //popularProduct.inCartItems.toString()),
                                                   SizedBox(
-                                                    width: Dimensions.width10 / 2,
+                                                    width:
+                                                        Dimensions.width10 / 2,
                                                   ),
                                                   GestureDetector(
                                                       onTap: () {
@@ -125,7 +157,8 @@ class CartPage extends StatelessWidget {
                                                       },
                                                       child: Icon(
                                                         Icons.add,
-                                                        color: AppColors.signColor,
+                                                        color:
+                                                            AppColors.signColor,
                                                       )),
                                                 ],
                                               ),
