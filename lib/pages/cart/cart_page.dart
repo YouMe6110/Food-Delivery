@@ -35,13 +35,18 @@ class CartPage extends StatelessWidget {
                 ),
                 GestureDetector(
                   onTap: () {
-                    Get.to(()=>MainFoodPage());
+                    Get.to(() => MainFoodPage());
                   },
-                  child: AppIcon(
-                    icon: Icons.home_outlined,
-                    iconColor: Colors.white,
-                    backgroundColor: AppColors.mainColor,
-                    iconSize: Dimensions.iconSize24,
+                  child: GestureDetector(
+                    onTap: () {
+                      Get.to(() => MainFoodPage());
+                    },
+                    child: AppIcon(
+                      icon: Icons.home_outlined,
+                      iconColor: Colors.white,
+                      backgroundColor: AppColors.mainColor,
+                      iconSize: Dimensions.iconSize24,
+                    ),
                   ),
                 ),
                 AppIcon(

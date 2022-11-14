@@ -69,13 +69,18 @@ class PopularFoodDetail extends StatelessWidget {
                                 top: 0,
                                 child: GestureDetector(
                                   onTap: () {
-                                    Get.to(()=>CartPage());
-                    },
-                                  child: AppIcon(
-                                    icon: Icons.circle,
-                                    size: 20,
-                                    iconColor: Colors.transparent,
-                                    backgroundColor: AppColors.mainColor,
+                                    Get.to(() => CartPage());
+                                  },
+                                  child: GestureDetector(
+                                    onTap: () {
+                                      Get.to(() => CartPage());
+                                    },
+                                    child: AppIcon(
+                                      icon: Icons.circle,
+                                      size: 20,
+                                      iconColor: Colors.transparent,
+                                      backgroundColor: AppColors.mainColor,
+                                    ),
                                   ),
                                 ))
                             : Container(),
@@ -201,7 +206,8 @@ class PopularFoodDetail extends StatelessWidget {
                       color: Colors.white,
                     ),
                     decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(Dimensions.radius20),
+                        borderRadius:
+                            BorderRadius.circular(Dimensions.radius20),
                         color: AppColors.mainColor),
                   ),
                 )
