@@ -12,7 +12,7 @@ import 'package:food_delivery/widgets/big_text.dart';
 import 'package:food_delivery/widgets/exandable_text_widget.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
-import 'package:food_delivery/pages/cart/cart_page.dart';
+import 'package:food_delivery/routes/route_helper.dart';
 
 class PopularFoodDetail extends StatelessWidget {
   final int pageId;
@@ -69,12 +69,8 @@ class PopularFoodDetail extends StatelessWidget {
                                 top: 0,
                                 child: GestureDetector(
                                   onTap: () {
-                                    Get.to(() => CartPage());
+                                    Get.toNamed(RouteHelper.getCartPage());
                                   },
-                                  child: GestureDetector(
-                                    onTap: () {
-                                      Get.to(() => CartPage());
-                                    },
                                     child: AppIcon(
                                       icon: Icons.circle,
                                       size: 20,
@@ -82,7 +78,7 @@ class PopularFoodDetail extends StatelessWidget {
                                       backgroundColor: AppColors.mainColor,
                                     ),
                                   ),
-                                ))
+                                )
                             : Container(),
                         Get.find<PopularProductController>().totalItems >= 1
                             ? Positioned(

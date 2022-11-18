@@ -12,7 +12,6 @@ import 'package:food_delivery/widgets/big_text.dart';
 import 'package:food_delivery/widgets/exandable_text_widget.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
-import 'package:food_delivery/pages/cart/cart_page.dart';
 
 class RecommendedFoodDetail extends StatelessWidget {
   final int pageId;
@@ -55,7 +54,7 @@ class RecommendedFoodDetail extends StatelessWidget {
                               top: 0,
                               child: GestureDetector(
                                 onTap: () {
-                                  Get.to(() => CartPage());
+                                  Get.toNamed(RouteHelper.getCartPage());
                                 },
                                 child: AppIcon(
                                   icon: Icons.circle,

@@ -40,6 +40,7 @@ class RouteHelper {
       page: () {
         return CartPage();
       },
+      transition: Transition.fadeIn
     )
   ];
 }
