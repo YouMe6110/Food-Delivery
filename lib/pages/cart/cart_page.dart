@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:food_delivery/controllers/cart_controller.dart';
-import 'package:food_delivery/pages/home/main_food_page.dart';
 import 'package:food_delivery/utils/app_constants.dart';
 import 'package:food_delivery/utils/colors.dart';
 import 'package:food_delivery/utils/dimensions.dart';
@@ -8,8 +7,7 @@ import 'package:food_delivery/widgets/app_icon.dart';
 import 'package:food_delivery/widgets/big_text.dart';
 import 'package:food_delivery/widgets/small_text.dart';
 import 'package:get/get.dart';
-
-import '../../routes/route_helper.dart';
+import 'package:food_delivery/routes/route_helper.dart';
 
 class CartPage extends StatelessWidget {
   const CartPage({Key? key}) : super(key: key);
@@ -39,16 +37,11 @@ class CartPage extends StatelessWidget {
                   onTap: () {
                     Get.toNamed(RouteHelper.getInitial());
                   },
-                  child: GestureDetector(
-                    onTap: () {
-                      Get.to(() => MainFoodPage());
-                    },
-                    child: AppIcon(
-                      icon: Icons.home_outlined,
-                      iconColor: Colors.white,
-                      backgroundColor: AppColors.mainColor,
-                      iconSize: Dimensions.iconSize24,
-                    ),
+                  child: AppIcon(
+                    icon: Icons.home_outlined,
+                    iconColor: Colors.white,
+                    backgroundColor: AppColors.mainColor,
+                    iconSize: Dimensions.iconSize24,
                   ),
                 ),
                 AppIcon(
@@ -73,8 +66,9 @@ class CartPage extends StatelessWidget {
                     removeTop: true,
                     child:
                         GetBuilder<CartController>(builder: (cartController) {
+                      var _cartList = cartController.getItems;
                       return ListView.builder(
-                          itemCount: cartController.getItems.length,
+                          itemCount: _cartList.length,
                           itemBuilder: (_, index) {
                             return Container(
                               width: double.maxFinite,
@@ -152,7 +146,10 @@ class CartPage extends StatelessWidget {
                                                     width:
                                                         Dimensions.width10 / 2,
                                                   ),
-                                                  BigText(text: "0"),
+                                                  BigText(
+                                                      text: _cartList[index]
+                                                          .quantity
+                                                          .toString()),
                                                   //popularProduct.inCartItems.toString()),
                                                   SizedBox(
                                                     width:
