@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:food_delivery/controllers/cart_controller.dart';
+import 'package:food_delivery/controllers/popular_product_controller.dart';
 import 'package:food_delivery/utils/app_constants.dart';
 import 'package:food_delivery/utils/colors.dart';
 import 'package:food_delivery/utils/dimensions.dart';
@@ -75,22 +76,27 @@ class CartPage extends StatelessWidget {
                               height: Dimensions.height20 * 5,
                               child: Row(
                                 children: [
-                                  Container(
-                                    width: Dimensions.height20 * 5,
-                                    height: Dimensions.height20 * 5,
-                                    margin: EdgeInsets.only(
-                                        bottom: Dimensions.height10),
-                                    decoration: BoxDecoration(
-                                        image: DecorationImage(
-                                            fit: BoxFit.cover,
-                                            image: NetworkImage(
-                                                AppConstants.BASE_URL +
-                                                    AppConstants.UPLOAD_URL +
-                                                    cartController
-                                                        .getItems[index].img!)),
-                                        borderRadius: BorderRadius.circular(
-                                            Dimensions.radius20),
-                                        color: Colors.white),
+                                  GestureDetector(
+                                    onTap: () {
+                                      var popularIndex = Get.find<PopularProductController>().popularProductList.indexOf(_cartList[index].product!);
+                                    },
+                                    child: Container(
+                                      width: Dimensions.height20 * 5,
+                                      height: Dimensions.height20 * 5,
+                                      margin: EdgeInsets.only(
+                                          bottom: Dimensions.height10),
+                                      decoration: BoxDecoration(
+                                          image: DecorationImage(
+                                              fit: BoxFit.cover,
+                                              image: NetworkImage(
+                                                  AppConstants.BASE_URL +
+                                                      AppConstants.UPLOAD_URL +
+                                                      cartController
+                                                          .getItems[index].img!)),
+                                          borderRadius: BorderRadius.circular(
+                                              Dimensions.radius20),
+                                          color: Colors.white),
+                                    ),
                                   ),
                                   SizedBox(
                                     width: Dimensions.width10,
