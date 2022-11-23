@@ -8,6 +8,7 @@ import 'package:food_delivery/widgets/app_icon.dart';
 import 'package:food_delivery/widgets/big_text.dart';
 import 'package:food_delivery/widgets/small_text.dart';
 import 'package:get/get.dart';
+import 'package:food_delivery/controllers/recommended_product_controller.dart';
 import 'package:food_delivery/routes/route_helper.dart';
 
 class CartPage extends StatelessWidget {
@@ -78,7 +79,23 @@ class CartPage extends StatelessWidget {
                                 children: [
                                   GestureDetector(
                                     onTap: () {
-                                      var popularIndex = Get.find<PopularProductController>().popularProductList.indexOf(_cartList[index].product!);
+                                      var popularIndex =
+                                          Get.find<PopularProductController>()
+                                              .popularProductList
+                                              .indexOf(
+                                                  _cartList[index].product!);
+                                      if (popularIndex >= 0) {
+                                        Get.toNamed(RouteHelper.getPopularFood(
+                                            popularIndex, "cartpage"));
+                                      } else {
+                                        var recommendedIndex = Get.find<
+                                                RecommendedProductController>()
+                                            .recommendedProductList
+                                            .indexOf(_cartList[index].product!);
+                                        Get.toNamed(
+                                            RouteHelper.getRecommendedFood(
+                                                recommendedIndex, "cartpage"));
+                                      }
                                     },
                                     child: Container(
                                       width: Dimensions.height20 * 5,
@@ -92,7 +109,8 @@ class CartPage extends StatelessWidget {
                                                   AppConstants.BASE_URL +
                                                       AppConstants.UPLOAD_URL +
                                                       cartController
-                                                          .getItems[index].img!)),
+                                                          .getItems[index]
+                                                          .img!)),
                                           borderRadius: BorderRadius.circular(
                                               Dimensions.radius20),
                                           color: Colors.white),
@@ -141,7 +159,10 @@ class CartPage extends StatelessWidget {
                                                 children: [
                                                   GestureDetector(
                                                       onTap: () {
-                                                        cartController.addItem(_cartList[index].product!, -1);
+                                                        cartController.addItem(
+                                                            _cartList[index]
+                                                                .product!,
+                                                            -1);
                                                       },
                                                       child: Icon(
                                                         Icons.remove,
@@ -163,7 +184,10 @@ class CartPage extends StatelessWidget {
                                                   ),
                                                   GestureDetector(
                                                       onTap: () {
-                                                        cartController.addItem(_cartList[index].product!, 1);
+                                                        cartController.addItem(
+                                                            _cartList[index]
+                                                                .product!,
+                                                            1);
                                                         print("being tapped");
                                                       },
                                                       child: Icon(
