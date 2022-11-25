@@ -211,8 +211,8 @@ class CartPage extends StatelessWidget {
                   )))
         ],
       ),
-      bottomNavigationBar: GetBuilder<PopularProductController>(
-        builder: (popularProduct) {
+      bottomNavigationBar: GetBuilder<CartController>(
+        builder: (cartController) {
           return Container(
             height: Dimensions.bottomHeightBar,
             padding: EdgeInsets.only(
@@ -242,7 +242,8 @@ class CartPage extends StatelessWidget {
                       SizedBox(
                         width: Dimensions.width10 / 2,
                       ),
-                      BigText(text: popularProduct.inCartItems.toString()),
+                      BigText(
+                          text: "\$ " + cartController.totalAmount.toString()),
                       SizedBox(
                         width: Dimensions.width10 / 2,
                       ),
