@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:food_delivery/pages/splash/splash_page.dart';
 import 'package:food_delivery/routes/route_helper.dart';
 import 'package:get/get.dart';
 import 'controllers/popular_product_controller.dart';
@@ -22,7 +23,8 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
-      initialRoute: RouteHelper.getInitial(),
+      home: SplashScreen(),
+      //initialRoute: RouteHelper.getInitial(),
       getPages: RouteHelper.routes,
     );
   }
