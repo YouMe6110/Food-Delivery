@@ -1,5 +1,12 @@
+import 'dart:async';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:food_delivery/routes/route_helper.dart';
+import 'package:food_delivery/utils/dimensions.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:food_delivery/controllers/popular_product_controller.dart';
+import 'package:food_delivery/controllers/recommended_product_controller.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key}) : super(key: key);
@@ -13,13 +20,22 @@ class _SplashScreenState extends State<SplashScreen>
   late Animation<double> animation;
   late AnimationController controller;
 
+  Future<void> _loadResource() async {
+    await Get.find<PopularProductController>().getPopularProductList();
+    await Get.find<RecommendedProductController>().getRecommendedProductList();
+  }
+
   @override
   void initState() {
     super.initState();
+    _loadResource();
     controller =
         AnimationController(vsync: this, duration: const Duration(seconds: 2))
           ..forward();
     animation = CurvedAnimation(parent: controller, curve: Curves.linear);
+
+    Timer(const Duration(seconds: 3),
+        () => Get.offNamed(RouteHelper.getInitial()));
   }
 
   @override
@@ -33,8 +49,8 @@ class _SplashScreenState extends State<SplashScreen>
               scale: animation,
               child: Center(
                   child:
-                      Image.asset("assets/image/logo part 1.png", width: 250))),
-          Center(child: Image.asset("assets/image/logo part 2.png", width: 250))
+                      Image.asset("assets/image/logo part 1.png", width: Dimensions.splashImg))),
+          Center(child: Image.asset("assets/image/logo part 2.png", width: Dimensions.splashImg))
         ],
       ),
     );
