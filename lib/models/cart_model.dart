@@ -40,7 +40,8 @@ class CartModel {
       "img": this.img,
       "quantity": this.quantity,
       "isExist": this.isExit,
-      "time": this.time
+      "time": this.time,
+      "product":this.product!.toJson()
     };
   }
 }
