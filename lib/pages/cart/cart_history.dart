@@ -16,7 +16,7 @@ class CartHistory extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var getCartHistoryList = Get.find<CartController>().getCartHistoryList();
+    var getCartHistoryList = Get.find<CartController>().getCartHistoryList().reversed.toList();
 
     Map<String, int> cartItemsPerOrder = Map();
 
@@ -41,10 +41,10 @@ class CartHistory extends StatelessWidget {
       body: Column(
         children: [
           Container(
-            height: 100,
+            height: Dimensions.height10*10,
             color: AppColors.mainColor,
             width: double.maxFinite,
-            padding: EdgeInsets.only(top: 45),
+            padding: EdgeInsets.only(top: Dimensions.height45),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
@@ -62,7 +62,7 @@ class CartHistory extends StatelessWidget {
           ),
           Expanded(
             child: Container(
-                height: 120,
+                height: Dimensions.height30*4,
                 margin: EdgeInsets.only(
                   top: Dimensions.height20,
                   left: Dimensions.width20,
@@ -111,8 +111,8 @@ class CartHistory extends StatelessWidget {
                                         }
                                         return index <= 2
                                             ? Container(
-                                                height: 80,
-                                                width: 80,
+                                                height: Dimensions.height20*4,
+                                                width: Dimensions.height20*4,
                                                 margin: EdgeInsets.only(
                                                     right: Dimensions.width10 /
                                                         2),
@@ -135,7 +135,7 @@ class CartHistory extends StatelessWidget {
                                       }),
                                     ),
                                     Container(
-                                      height: 80,
+                                      height: Dimensions.height20*4,
                                       child: Column(
                                         mainAxisAlignment:
                                             MainAxisAlignment.spaceEvenly,
