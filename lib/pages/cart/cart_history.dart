@@ -150,26 +150,32 @@ class CartHistory extends StatelessWidget {
                                                   itemsPerOrder[i].toString() +
                                                       " Items",
                                               color: AppColors.titleColor),
-                                          Container(
-                                            padding: EdgeInsets.symmetric(
-                                                horizontal: Dimensions.width10,
-                                                vertical:
-                                                    Dimensions.height10 / 2),
-                                            decoration: BoxDecoration(
-                                              borderRadius:
-                                                  BorderRadius.circular(
-                                                      Dimensions.radius15 / 3),
-                                              border: Border.all(
-                                                  width: 1,
+                                          GestureDetector(
+                                            onTap: () {
+
+                                            },
+                                            child: Container(
+                                              padding: EdgeInsets.symmetric(
+                                                  horizontal: Dimensions.width10,
+                                                  vertical:
+                                                  Dimensions.height10 / 2),
+                                              decoration: BoxDecoration(
+                                                borderRadius:
+                                                BorderRadius.circular(
+                                                    Dimensions.radius15 / 3),
+                                                border: Border.all(
+                                                    width: 1,
+                                                    color: AppColors.mainColor),
+                                              ),
+                                              child: SmallText(
+                                                  text: "one more",
                                                   color: AppColors.mainColor),
-                                            ),
-                                            child: SmallText(
-                                                text: "one more",
-                                                color: AppColors.mainColor),
-                                          )
-                                        ],
-                                      ),
+                                            )
+
+                                          ),
                                     )
+                                          )
+
                                   ],
                                 )
                               ],
