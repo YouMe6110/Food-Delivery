@@ -5,7 +5,6 @@ import 'package:food_delivery/widgets/big_text.dart';
 import 'package:food_delivery/widgets/app_icon.dart';
 import 'package:food_delivery/widgets/small_text.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 import 'package:food_delivery/controllers/cart_controller.dart';
 import 'package:intl/intl.dart';
 
@@ -16,7 +15,8 @@ class CartHistory extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var getCartHistoryList = Get.find<CartController>().getCartHistoryList().reversed.toList();
+    var getCartHistoryList =
+        Get.find<CartController>().getCartHistoryList().reversed.toList();
 
     Map<String, int> cartItemsPerOrder = Map();
 
@@ -29,11 +29,11 @@ class CartHistory extends StatelessWidget {
       }
     }
 
-    List<int> cartOrderTimeToList() {
+    List<int> cartItemsPerOrderTimeToList() {
       return cartItemsPerOrder.entries.map((e) => e.value).toList();
     }
 
-    List<int> itemsPerOrder = cartOrderTimeToList();
+    List<int> itemsPerOrder = cartItemsPerOrderTimeToList();
 
     var listCounter = 0;
 
@@ -41,7 +41,7 @@ class CartHistory extends StatelessWidget {
       body: Column(
         children: [
           Container(
-            height: Dimensions.height10*10,
+            height: Dimensions.height10 * 10,
             color: AppColors.mainColor,
             width: double.maxFinite,
             padding: EdgeInsets.only(top: Dimensions.height45),
@@ -62,7 +62,7 @@ class CartHistory extends StatelessWidget {
           ),
           Expanded(
             child: Container(
-                height: Dimensions.height30*4,
+                height: Dimensions.height30 * 4,
                 margin: EdgeInsets.only(
                   top: Dimensions.height20,
                   left: Dimensions.width20,
@@ -111,8 +111,8 @@ class CartHistory extends StatelessWidget {
                                         }
                                         return index <= 2
                                             ? Container(
-                                                height: Dimensions.height20*4,
-                                                width: Dimensions.height20*4,
+                                                height: Dimensions.height20 * 4,
+                                                width: Dimensions.height20 * 4,
                                                 margin: EdgeInsets.only(
                                                     right: Dimensions.width10 /
                                                         2),
@@ -135,47 +135,51 @@ class CartHistory extends StatelessWidget {
                                       }),
                                     ),
                                     Container(
-                                      height: Dimensions.height20*4,
-                                      child: Column(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceEvenly,
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.end,
-                                        children: [
-                                          SmallText(
-                                              text: "Total",
-                                              color: AppColors.titleColor),
-                                          BigText(
-                                              text:
-                                                  itemsPerOrder[i].toString() +
-                                                      " Items",
-                                              color: AppColors.titleColor),
-                                          GestureDetector(
-                                            onTap: () {
-
-                                            },
-                                            child: Container(
-                                              padding: EdgeInsets.symmetric(
-                                                  horizontal: Dimensions.width10,
-                                                  vertical:
-                                                  Dimensions.height10 / 2),
-                                              decoration: BoxDecoration(
-                                                borderRadius:
-                                                BorderRadius.circular(
-                                                    Dimensions.radius15 / 3),
-                                                border: Border.all(
-                                                    width: 1,
+                                        height: Dimensions.height20 * 4,
+                                        child: Column(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceEvenly,
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.end,
+                                          children: [
+                                            SmallText(
+                                                text: "Total",
+                                                color: AppColors.titleColor),
+                                            BigText(
+                                                text: itemsPerOrder[i]
+                                                        .toString() +
+                                                    " Items",
+                                                color: AppColors.titleColor),
+                                            GestureDetector(
+                                              onTap: () {
+                                                print("Doing text " +
+                                                    itemsPerOrder[i]
+                                                        .toString());
+                                              },
+                                              child: Container(
+                                                padding: EdgeInsets.symmetric(
+                                                    horizontal:
+                                                        Dimensions.width10,
+                                                    vertical:
+                                                        Dimensions.height10 /
+                                                            2),
+                                                decoration: BoxDecoration(
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          Dimensions.radius15 /
+                                                              3),
+                                                  border: Border.all(
+                                                      width: 1,
+                                                      color:
+                                                          AppColors.mainColor),
+                                                ),
+                                                child: SmallText(
+                                                    text: "one more",
                                                     color: AppColors.mainColor),
                                               ),
-                                              child: SmallText(
-                                                  text: "one more",
-                                                  color: AppColors.mainColor),
-                                            )
-
-                                          ),
-                                    )
-                                          )
-
+                                            ),
+                                          ],
+                                        ))
                                   ],
                                 )
                               ],
