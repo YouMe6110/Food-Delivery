@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:food_delivery/utils/app_constants.dart';
 import 'package:food_delivery/utils/colors.dart';
@@ -7,8 +8,8 @@ import 'package:food_delivery/widgets/small_text.dart';
 import 'package:get/get.dart';
 import 'package:food_delivery/controllers/cart_controller.dart';
 import 'package:intl/intl.dart';
-
-import '../../utils/dimensions.dart';
+import 'package:food_delivery/models/cart_model.dart';
+import 'package:food_delivery/utils/dimensions.dart';
 
 class CartHistory extends StatelessWidget {
   const CartHistory({Key? key}) : super(key: key);
@@ -31,6 +32,10 @@ class CartHistory extends StatelessWidget {
 
     List<int> cartItemsPerOrderTimeToList() {
       return cartItemsPerOrder.entries.map((e) => e.value).toList();
+    }
+
+    List<String> cartOrderTimeToList() {
+      return cartItemsPerOrder.entries.map((e) => e.key).toList();
     }
 
     List<int> itemsPerOrder = cartItemsPerOrderTimeToList();
@@ -152,9 +157,27 @@ class CartHistory extends StatelessWidget {
                                                 color: AppColors.titleColor),
                                             GestureDetector(
                                               onTap: () {
-                                                print("Doing text " +
-                                                    itemsPerOrder[i]
-                                                        .toString());
+                                                var orderTime =
+                                                    cartOrderTimeToList();
+                                                Map<int, CartModel> moreOrder =
+                                                    {};
+                                                for (int j = 0;
+                                                    j <
+                                                        getCartHistoryList
+                                                            .length;
+                                                    j++) {
+                                                  if (getCartHistoryList[j]
+                                                          .time ==
+                                                      orderTime[i]) {
+                                                    moreOrder.putIfAbsent(
+                                                        getCartHistoryList[j]
+                                                            .id!,
+                                                        () => CartModel.fromJson(
+                                                            jsonDecode(jsonEncode(
+                                                                getCartHistoryList[
+                                                                    j]))));
+                                                  }
+                                                }
                                               },
                                               child: Container(
                                                 padding: EdgeInsets.symmetric(
