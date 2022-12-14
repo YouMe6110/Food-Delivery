@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:food_delivery/pages/account/account_page.dart';
 import 'package:food_delivery/pages/cart/cart_history.dart';
 import 'package:food_delivery/pages/home/main_food_page.dart';
 import 'package:food_delivery/utils/colors.dart';
@@ -14,12 +15,13 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   int _selectedIndex = 0;
+
   //late PersistentTabController _controller;
   List pages = [
     MainFoodPage(),
     Container(child: Center(child: Text("Next page"))),
     CartHistory(),
-    Container(child: Center(child: Text("Next next next page"))),
+    AccountPage(),
   ];
 
   void onTapNav(int index) {
@@ -96,7 +98,7 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
- /* @override
+/* @override
   Widget build(BuildContext context) {
     return PersistentTabView(
       context,
