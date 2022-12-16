@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import '../utils/colors.dart';
-import '../utils/dimensions.dart';
+import 'package:food_delivery/utils/colors.dart';
+import 'package:food_delivery/utils/dimensions.dart';
 
 class AppTextField extends StatelessWidget {
   final TextEditingController textController;
@@ -36,7 +36,7 @@ class AppTextField extends StatelessWidget {
             //hintText,
             hintText: hintText,
             prefixIcon: Icon(
-              Icons.email,
+              icon,
               color: AppColors.yellowColor,
             ),
             //focusedBorder
