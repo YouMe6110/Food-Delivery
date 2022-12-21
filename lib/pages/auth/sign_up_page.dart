@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:food_delivery/base/custom_loader.dart';
 import 'package:food_delivery/controllers/auth_controller.dart';
 import 'package:food_delivery/models/signup_body_model.dart';
 import 'package:food_delivery/utils/colors.dart';
@@ -172,7 +173,7 @@ class SignUpPage extends StatelessWidget {
                   ],
                 ),
               )
-            : CircularProgressIndicator();
+            : const CustomLoader();
       }),
     );
   }
