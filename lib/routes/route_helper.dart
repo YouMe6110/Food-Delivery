@@ -5,12 +5,15 @@ import 'package:get/get.dart';
 import 'package:food_delivery/pages/food/recommended_food_detail.dart';
 import 'package:food_delivery/pages/home/home_page.dart';
 
+import '../pages/auth/sign_in_page.dart';
+
 class RouteHelper {
   static const String splashPage = "/splash-page";
   static const String initial = "/";
   static const String popularFood = "/popular-food";
   static const String recommendedFood = "/recommended-food";
   static const String cartPage = "/cart-page";
+  static const String signIn = "/sign-in";
 
   static String getSplashPage() => '$splashPage';
 
@@ -24,9 +27,21 @@ class RouteHelper {
 
   static String getCartPage() => '$cartPage';
 
+  static String getSignInPage() => '$signIn';
+
   static List<GetPage> routes = [
     GetPage(name: splashPage, page: () => SplashScreen()),
-    GetPage(name: initial, page: () => HomePage()),
+    GetPage(
+        name: initial,
+        page: () {
+          return HomePage();
+        }),
+    GetPage(
+        name: signIn,
+        page: () {
+          return SignInPage();
+        },
+        transition: Transition.fade),
     GetPage(
         name: popularFood,
         page: () {
