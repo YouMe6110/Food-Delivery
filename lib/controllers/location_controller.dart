@@ -15,6 +15,10 @@ class LocationController extends GetxController implements GetxService {
   late Position _pickPosition;
   Placemark _placemark = Placemark();
   Placemark _pickPlacemark = Placemark();
+
+  Placemark get placemark => _placemark;
+
+  Placemark get pickPlacemark => _pickPlacemark;
   List<AddressModel> _addressList = [];
 
   List<AddressModel> get addressList => _addressList;
@@ -69,6 +73,9 @@ class LocationController extends GetxController implements GetxService {
         if (_changeAddress) {
           String _address = await getAddressfromGeocode(
               LatLng(position.target.latitude, position.target.longitude));
+          fromAddress
+              ? _placemark = Placemark(name: _address)
+              : _pickPlacemark = Placemark(name: _address);
         }
       } catch (e) {
         print(e);
@@ -81,6 +88,7 @@ class LocationController extends GetxController implements GetxService {
     Response response = await locationRepo.getAddressfromGeocode(latLng);
     if (response.body["status"] == 'OK') {
       _address = response.body["results"][0]['formatted_address'].toString();
+      print("printing address " + _address);
     } else {
       print("Error getting the google api");
     }
